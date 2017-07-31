@@ -1,0 +1,24 @@
+{
+  "name": "c92",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build && next export -o docs",
+    "start": "next start"
+  },
+  "repository": "https://github.com/pentapod/c92.git",
+  "author": "spring-raining",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "babel-plugin-css-modules-transform": "^1.2.7",
+    "glamor": "^2.20.37",
+    "next": "beta",
+    "normalize.css": "^7.0.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-inlinesvg": "^0.6.2",
+    "react-share": "^1.15.0"
+  }
+}
