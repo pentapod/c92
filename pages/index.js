@@ -124,7 +124,7 @@ export default class extends React.Component {
             <section className="detail">
               <div className="container">
                 <div className="toc">
-                  <center><h2 className="heading">掲載コンテンツ</h2></center>
+                  <center><h2 className="heading">コンテンツ</h2></center>
                   <dl>
                     <div className="content">
                       <dt><h3 className="heading">CSS組版を始める</h3></dt>
@@ -184,11 +184,11 @@ export default class extends React.Component {
                   </tbody>
                 </table>
 
-                <div className="react-native">
-                  <a href="https://pentapod.github.io/c90"><img src="static/react-native-cover.png" /></a>
+                <div className="tbf02">
+                  <a href="https://pentapod.github.io/tbf02"><img src="static/tbf02-cover.jpg" /></a>
                   <div className="description">
-                    XXX<br/>
-                    頒布価格&nbsp;<strong><s>¥1000</s>→¥500</strong>
+                    技術書典2新刊「<a href="https://pentapod.github.io/tbf02">チートシート・チートシート</a>」も頒布予定！<br/>
+                    冊子版は在庫が無いので何らかの紙に印刷してきます。
                   </div>
                 </div>
               </div>
@@ -443,16 +443,18 @@ export default class extends React.Component {
               bottom: 0;
             }
           }
-          @media (max-width: 500px) {
-            header {
-              height: 100vw;
-            }
+          @media (max-width: 640px) {
             header .badge {
               width: 60px;
               height: 60px;
               font-size: 16px;
               line-height: 18px;
               box-shadow: 0 0 0 2px ${globalColors.primary}, 0 0 0 4px ${globalColors.secondary};
+            }
+          }
+          @media (max-width: 500px) {
+            header {
+              height: 100vw;
             }
             header .title-container {
               width: 90vw;
@@ -531,19 +533,19 @@ export default class extends React.Component {
           }
           .sample {
             position: absolute;
-            z-index: -100;
+            z-index: 0;
             top: 35px;
             right: 0;
-            width: 40%;
+            width: 50%;
             overflow: hidden;
           }
           @keyframes sample-h500 {
             0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-1666px, 0, 0); }
+            100% { transform: translate3d(-1598.66px, 0, 0); } {/* = 2625 * (500 / 821) */}
           }
           @keyframes sample-h300 {
             0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-999px, 0, 0); }
+            100% { transform: translate3d(-959.20px, 0, 0); } {/* = 2625 * (300 / 821) */}
           }
           .sample:before {
             content: " ";
@@ -553,6 +555,10 @@ export default class extends React.Component {
             background-image: url(static/sample.jpg);
             background-size: contain;
             animation: sample-h500 30s linear infinite;
+          }
+          .spec .container {
+            position: relative;
+            z-index: 10;
           }
           .spec tr {
             margin: 10px 0;
@@ -573,22 +579,18 @@ export default class extends React.Component {
           .spec .btn {
             margin: 0 1em;
           }
-          .react-native {
+          .tbf02 {
             display: flex;
             padding: 20px;
-            width: 420px;
-            color: #ffffff;
-            background-color: #57A7BF;
+            width: 440px;
+            background-color: #f7eaeb;
             border-radius: 2px;
           }
-          .react-native a {
-            color: #ffffff;
-          }
-          .react-native img {
+          .tbf02 img {
             height: 105px;
             margin-right: 20px;
           }
-          .react-native .description {
+          .tbf02 .description {
             flex-grow: 1;
           }
           @media (max-width: 767px) {
@@ -600,15 +602,14 @@ export default class extends React.Component {
             }
             .sample:before {
               height: 300px;
-              animation: sample-h500 30s linear infinite;
+              animation: sample-h300 30s linear infinite;
             }
             .spec th {
               width: 60px;
             }
-            .react-native {
-              margin-left: -20px;
-              width: 100%;
-              border-radius: 0;
+            .tbf02 {
+              margin: 20px;
+              width: auto;
             }
           }
           @media (min-width: 768px) {
@@ -648,7 +649,7 @@ export default class extends React.Component {
               margin: 10px 10vw;
             }
           }
-          @media (max-width: 1410px) and (min-width: 768px) {
+          @media (max-width: 1440px) and (min-width: 768px) {
             .share span {
               font-size: 0;
             }
