@@ -8,16 +8,15 @@ import button from './../components/lib/button';
 const globalColors = {
   primary: '#243767',
   secondary: '#fff23f',
-  bg: '#f7eaeb',
+  bg: '#e7e8ec',
   text: '#252525',
-  textAlt: '#381d1f',
 };
 
 const bodyProps = {
   siteName: 'C92新刊「CSSではじめる同人誌制作」 .∵. pentapod',
   title: 'C92新刊「CSSではじめる同人誌制作」 .∵. pentapod',
   description: '作ろうあなただけの本 C92新刊「CSSではじめる同人誌制作」',
-  url: 'https://pentapod.github.io/tbf02',
+  url: 'https://pentapod.github.io/c92',
   image: 'https://pentapod.github.io/c92/static/og.png',
   favicon: 'https://pentapod.github.io/c92/static/favicon.png',
   fbAppId: '513983385471617',
@@ -25,7 +24,7 @@ const bodyProps = {
 const shareText = bodyProps.description + ' ' + bodyProps.url;
 
 const urls = {
-  catalog: 'https://webcatalog-free.circle.ms/Circle/13312863',
+  catalog: 'https://webcatalog.circle.ms/Circle/13312863',
   booth: '',
   twitterShare: 'https://twitter.com/intent/tweet'
     + `?text=${encodeURIComponent(shareText)}`,
@@ -62,6 +61,10 @@ export default class extends React.Component {
         <div id="global" className={this.state.loaded? 'loaded' : 'loading'}>
           <div className="left">
             <header>
+              <div className="illust-container">
+                <img src="static/top_illust.png" />
+              </div>
+
               <div className="title-container">
                 <div className="title">
                   <img src="static/title.svg" alt="CSSではじめる同人誌制作" />
@@ -71,23 +74,8 @@ export default class extends React.Component {
                 </div>
               </div>
 
-              <div className="brand-container">
-                <a href="https://pentapod.github.io">
-                  <div className="logo"
-                        style={{ width: 30 }}
-                        >
-                    <Isvg src='/static/logo.svg'></Isvg>
-                  </div>
-                  <div className="brand"
-                        style={{ width: 100 }}
-                        >
-                    <Isvg src='/static/brand.svg'>pentapod</Isvg>
-                  </div>
-                </a>
-              </div>
-
               <div className="credit">
-                Illust:&nbsp;
+                Illust:&nbsp;にと
               </div>
 
               <div className="share-container">
@@ -113,18 +101,45 @@ export default class extends React.Component {
 
           <div className="right">
             <section className="lead">
-              XXX
+              <div className="container">
+                <center>
+                  <h2 className="heading">CSSではじめる同人誌制作</h2>
+                </center>
+                <div className="content">
+                  <h3>CSS組版</h3>
+                  <p>
+                    <strong>CSS組版</strong>は、WordでもLaTeXでもInDesignでもない組版技術。
+                    HTMLの文章とCSSを用意するだけで、印刷用のPDFファイルとブラウザ表示用のWebページが同時に作成できます。
+                    「CSSではじめる同人誌制作」を読んで、あなたも自分だけのオリジナル同人誌作りをはじめましょう。
+                  </p>
+                  <h3>CSSとは</h3>
+                  <p>
+                    HTML形式の文章の見栄え(スタイル)を指定するためのスタイルシート言語。
+                    基本的にはWebページのような画面上のスタイルを指定するためのものですが、紙に印刷する際のスタイルも表現することができます。
+                  </p>
+                </div>
+              </div>
             </section>
 
             <section className="detail">
               <div className="container">
                 <div className="toc">
-                  <h3><center>掲載コンテンツ</center></h3>
+                  <center><h2 className="heading">掲載コンテンツ</h2></center>
                   <dl>
                     <div className="content">
-                      <dt><h3>XXX</h3></dt>
+                      <dt><h3 className="heading">CSS組版を始める</h3></dt>
                       <dd>
-                        XXX
+                        CSS組版とは／Vivliostyle／原稿の執筆
+                      </dd>
+
+                      <dt><h3 className="heading">レイアウトを作る</h3></dt>
+                      <dd>
+                        ページの設定／ページ領域外のレイアウト／改ページ／段組／縦書き／タイポグラフィ／テキストの装飾／ルビ／書体・フォント機能／図表／脚注／ナンバリング／色／数式
+                      </dd>
+
+                      <dt><h3 className="heading">原稿を出力する</h3></dt>
+                      <dd>
+                        Chromeの印刷機能／PDF出力の自動化
                       </dd>
                     </div>
                   </dl>
@@ -157,8 +172,8 @@ export default class extends React.Component {
                       <th>頒布価格</th>
                       <td>
                         B5冊子版&nbsp;<strong>¥500</strong><br/>
-                        電子版&nbsp;<strong>¥300</strong>
-                        <a href={urls.booth} className="btn" {...button.small(globalColors.primary)}>電子版を購入</a><br/>
+                        電子版&nbsp;<strong>¥300</strong>&nbsp;<small>BOOTHにて発売予定</small>
+                        {/*<a href={urls.booth} className="btn" {...button.small(globalColors.primary)}>電子版を購入</a>*/}<br/>
                         冊子版購入者は電子版が<strong>¥0!!!</strong>
                       </td>
                     </tr>
@@ -183,10 +198,18 @@ export default class extends React.Component {
               <div className="container">
                 <h3><center>このページを共有</center></h3>
                 <div className="buttons">
-                  <a href={urls.catalog} {...button.inverse('#4caf50', '#319235')}>Webカタログでお気に入りに追加</a>
-                  <a href={urls.twitterShare} {...button.inverse('#55acee', '#3b8dcc')}>Twitterでツイート</a>
-                  <a href={urls.facebookShare} {...button.inverse('#365899', '#1b386f')}>Facebookでシェア</a>
-                  <a href={urls.hatebuShare} {...button.inverse('#008fde', '#006fad')}>はてなブックマークに登録</a>
+                  <a href={urls.catalog} {...button.inverse('#4caf50', '#319235')}>
+                    Webカタログ<span class="long">でお気に入りに追加</span>
+                  </a>
+                  <a href={urls.twitterShare} {...button.inverse('#55acee', '#3b8dcc')}>
+                    Twitter<span class="long">でツイート</span>
+                  </a>
+                  <a href={urls.facebookShare} {...button.inverse('#365899', '#1b386f')}>
+                    Facebook<span class="long">でシェア</span>
+                  </a>
+                  <a href={urls.hatebuShare} {...button.inverse('#008fde', '#006fad')}>
+                    はてなブックマーク<span class="long">に登録</span>
+                  </a>
                 </div>
               </div>
             </section>
@@ -230,6 +253,13 @@ export default class extends React.Component {
                 url("static/fonts/NotoSansCJKjp-Jxck-Bold.woff2") format("woff2"),
                 url("static/fonts/NotoSansCJKjp-Jxck-Bold.woff") format("woff");
           }
+          @font-face {
+            font-family: "SourceHanSerifJP-Heading";
+            font-style: normal;
+            font-weight: 700;
+            src: url("static/fonts/SourceHanSerifJP-Bold.subset.woff2") format("woff2"),
+                url("static/fonts/SourceHanSerifJP-Bold.subset.woff") format("woff");
+          }
           body {
             margin: 0;
             padding: 0;
@@ -240,6 +270,7 @@ export default class extends React.Component {
             font-weight: 400;
             word-spacing: 0.2em;
             line-height: 1.8;
+            line-break: strict;
           }
           @media (max-width: 767px) {
             body {
@@ -250,30 +281,41 @@ export default class extends React.Component {
             margin: 1em 0;
           }
           a {
-            color: #2192b7;
+            color: #2a5ad6;
           }
           a:hover {
-            color: #1e86a8;
+            color: #1740ab;
           }
           section {
             position: relative;
           }
-          h1, h2, h3 {
+          h1, h2, h3, h4 {
             margin: 0;
           }
           h1  { font-size: 2.0em; }
           h2  { font-size: 1.6em; }
           h3  { font-size: 1.3em; }
+          h4  { font-size: 1.1em; }
           ul, ol {
             padding-left: 1em;
           }
 
           #global {
-            transition: opacity 1s;
+            transition: opacity .7s;
             opacity: 0;
           }
           #global.loaded {
             opacity: 1;
+          }
+
+          #global .illust-container {
+            transition: opacity 1s .4s, transform 1s .4s;
+            opacity: 0;
+            transform: translate3d(0, 20px, 0);
+          }
+          #global.loaded .illust-container {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
           }
 
           header .tw-share, header .fb-share {
@@ -287,7 +329,12 @@ export default class extends React.Component {
           .container {
             max-width: 920px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
+          }
+          @media (max-width: 767px) {
+            .container {
+              padding: 0 20px;
+            }
           }
           .left {
             background-color: ${globalColors.primary};
@@ -305,17 +352,26 @@ export default class extends React.Component {
               top: 0;
               bottom: 0;
               left: 0;
-              width: 30vw;
+              width: 35vw;
               box-sizing: border-box;
               border-left: 2vw solid #ffffff;
             }
             .right {
-              margin-left: 30vw;
+              margin-left: 35vw;
             }
           }
           header {
             position: relative;
             height: 100%;
+          }
+          header .illust-container {
+            position: absolute;
+            width: 40vw;
+            top: 40px;
+            left: -3vw;
+          }
+          header .illust-container img {
+            width: 100%;
           }
           header .title-container {
             position: relative;
@@ -326,17 +382,17 @@ export default class extends React.Component {
           header .title {
             font-size: 0;
           }
-          header .brand-container {
-            position: absolute;
-            bottom: 60px;
-            left: 2vw;
-          }
           header .credit {
+            position: absolute;
+            bottom: 56px;
+            right: 3vw;
+            color: #ffffff;
+            font-size: 85%;
           }
           header .share-container {
             position: absolute;
-            bottom: 35px;
-            right: 18px;
+            bottom: 34px;
+            left: 0;
           }
           header .badge {
             position: absolute;
@@ -360,23 +416,91 @@ export default class extends React.Component {
             margin: 0 0 18px auto;
             text-align: right;
           }
-          .lead {
-            margin: 0 0 0 auto;
-            max-width: 550px;
-            background-color: rgba(255, 255, 255, 0.5);
+          @media (max-width: 979px) {
+            .left {
+              border-top: 2vw solid #ffffff;
+            }
+            header {
+              height: 50vw;
+            }
+            header .illust-container {
+              left: auto;
+              width: 65vw;
+              top: -4vw;
+              right: 0;
+            }
+            header .title-container {
+              position: absolute;
+              margin-top: 0;
+              top: 4vw;
+              left: -24vw;
+              width: 60vw;
+            }
+            header .credit {
+              bottom: 22px;
+            }
+            header .share-container {
+              bottom: 0;
+            }
+          }
+          @media (max-width: 500px) {
+            header {
+              height: 100vw;
+            }
+            header .badge {
+              width: 60px;
+              height: 60px;
+              font-size: 16px;
+              line-height: 18px;
+              box-shadow: 0 0 0 2px ${globalColors.primary}, 0 0 0 4px ${globalColors.secondary};
+            }
+            header .title-container {
+              width: 90vw;
+              top: 35vw;
+              left: -40vw;
+            }
+          }
+
+          .heading {
+            display: inline-block;
+            font-family: "SourceHanSerifJP-Heading", sans-serif;
+            font-feature-settings: "palt", "pwid";
+          }
+          h2.heading {
+            font-size: 24px;
+            line-height: 28px;
+            border-bottom: 6px solid ${globalColors.primary};
+          }
+          h3.heading {
+            padding: 8px 8px 0 1000px;
+            margin-left: -1000px;
+            font-size: 22px;
+            line-height: 26px;
+            color: #ffffff;
+            background-color: ${globalColors.primary};
+          }
+
+          section.lead {
+            padding: 36px 0;
+            background-color: #ffffff;
+          }
+
+          .lead .content {
+            margin: 12px 0;
           }
 
           section.detail {
             padding: 36px 0;
             margin-left: -2vw;
             padding-left: 2vw;
-            color: ${globalColors.textAlt};
+            color: ${globalColors.primary};
             background-color: ${globalColors.bg};
             overflow: hidden;
           }
           .toc dl {
-            column-count: 2;
-            column-gap: 40px;
+            margin: 0;
+            {/* column-count: 2;
+            column-gap: 40px; */}
           }
           @media (max-width: 767px) {
             .toc dl {
@@ -389,13 +513,10 @@ export default class extends React.Component {
             margin: 12px 0;
           }
           .toc dt {
-            line-height: 26px;
-          }
-          .toc dt h3 {
-            font-size: 24px;
+            margin: 1rem 0;
           }
           .toc dd {
-            text-align: right;
+            margin-left: 2rem;
           }
           @media (max-width: 500px) {
             .toc dt h3 {
@@ -406,6 +527,7 @@ export default class extends React.Component {
           section.spec {
             padding: 36px 0;
             overflow: hidden;
+            background-color: #ffffff;
           }
           .sample {
             position: absolute;
@@ -506,7 +628,7 @@ export default class extends React.Component {
             padding: 36px 0;
             margin-left: -2vw;
             padding-left: 2vw;
-            color: ${globalColors.textAlt};
+            color: ${globalColors.primary};
             background-color: ${globalColors.bg};
             overflow: hidden;
           }
@@ -526,19 +648,24 @@ export default class extends React.Component {
               margin: 10px 10vw;
             }
           }
+          @media (max-width: 1410px) and (min-width: 768px) {
+            .share span {
+              font-size: 0;
+            }
+          }
 
           footer {
             padding: 36px 0;
-            overflow: hidden;
+            background-color: #ffffff;
           }
           footer .brand-container {
             text-align: center;
           }
-          .logo, .brand {
+          footer .logo, footer .brand {
             display: inline-block;
             margin-left: auto;
             padding-right: 1em;
-            fill: #ffffff;
+            fill: ${globalColors.text};
           }
         `}</style>
       </Body>
