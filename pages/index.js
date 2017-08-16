@@ -25,7 +25,8 @@ const shareText = bodyProps.description + ' ' + bodyProps.url;
 
 const urls = {
   catalog: 'https://webcatalog.circle.ms/Circle/13312863',
-  booth: '',
+  booth: 'https://pentapod.booth.pm/items/601017',
+  freeDownload: 'https://c92-free-download-tufcpnsksj.now.sh',
   twitterShare: 'https://twitter.com/intent/tweet'
     + `?text=${encodeURIComponent(shareText)}`,
   facebookShare: 'https://www.facebook.com/dialog/feed'
@@ -172,9 +173,10 @@ export default class extends React.Component {
                       <th>頒布価格</th>
                       <td>
                         B5冊子版&nbsp;<strong>¥500</strong><br/>
-                        電子版&nbsp;<strong>¥300</strong>&nbsp;<small>BOOTHにて発売予定</small>
-                        {/*<a href={urls.booth} className="btn" {...button.small(globalColors.primary)}>電子版を購入</a>*/}<br/>
-                        冊子版購入者は電子版が<strong>¥0!!!</strong>
+                        電子版&nbsp;<strong>¥300</strong>
+                        <a href={urls.booth} className="btn" {...button.small(globalColors.primary)}>電子版を購入</a><br/>
+                        冊子版購入者は電子版が<strong>¥0!!!</strong><br/>
+                        <a href={urls.freeDownload} className="btn" {...button.small(globalColors.primary)}>ダウンロードページへ進む</a>
                       </td>
                     </tr>
                     <tr>
